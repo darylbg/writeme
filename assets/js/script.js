@@ -1,11 +1,20 @@
 $(document).ready(function() {
     
+    function generateBtn() {
+        if ($('#search-box').val() == '') {
+          $('#readme-generate-btn').prop('disabled', true);
+        } else {
+          $('#readme-generate-btn').prop('disabled', false);
+        }
+      } generateBtn();
+
     var username;
     var fullName
     function usernameSearch() {
         $('#username-search-btn').on('click', function() {
             username = $('#username-search').val();
             console.log(username);
+            $('#repo-list').empty();
 
             // github api to call username
             fetch("https://api.github.com/users/" + username + "/repos")
@@ -44,18 +53,28 @@ $(document).ready(function() {
     function repoListSelect() {
         $('#repo-list li').on('click', function() {
             repoUrl = $(this).data('repo');
-            $('#search-box').val(repoUrl);
-            console.log(repoUrl);
+            $('#search-box').val($(this).text());
+            generateBtn();
         });
     } 
 
-    var apiKey = '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';
+    // function loadingDisplay() {
+    //     if ($('#generated-text').val() == '') {
+    //         $('#loading').css('display', 'block');
+    //     } else if ($('#generated-text').text() != '') {
+    //         $('#loading').css('display', 'none');
+    //     }
+    // } loadingDisplay();
+
+    var apiKey = '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';
     var apiUrl = 'https://api.openai.com/v1/completions';
 
     $('#readme-generate-btn').on('click', function() {
+        
+
         var prompt = "Please generate a README file in markdown format for my project hosted on GitHub" + repoUrl + "The README file should include the following sections:" + 
                         "1. Description - A brief introduction to the project." + 
-                        "2. Deployment - A section describing how to deploy the project and including links to the source code and live deployment if available." +
+                        "2. Deployment - A section describing how to deploy the project and including link to the source code and link to the live deployed website in github pages if available." +
                         "3. Usage - A section describing the purpose of the project and how it can be useful to users." +
                         "4. Technologies Used - A section listing the programming languages and libraries used in the project." +
                         "5. License - A section detailing the project's license." +
@@ -75,17 +94,42 @@ $(document).ready(function() {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + apiKey
-        },
-        method: 'POST',
-        data: JSON.stringify(data),
-        success: function(response) {
-            var text = response.choices[0].text;
-            $('#generated-text').text(text);
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.log('Error: ' + textStatus);
-        }
+            },
+            method: 'POST',
+            data: JSON.stringify(data),
+            success: function(response) {
+                var text = response.choices[0].text;
+                $('#generated-text').text(text);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('Error: ' + textStatus);
+            }
         });
     });
+
+    // copy code function
+    $('.copy-button').on('click', function() {
+        var code = $(this).prev('pre').find('code').html();
+        copyToClipboard(code);
+        alert('Code copied to clipboard!');
+      });
+      
+      function copyToClipboard(text) {
+        var $temp = $('<textarea>');
+        $('body').append($temp);
+        $temp.val(text).select();
+        document.execCommand('copy');
+        $temp.remove();
+      }
+
+
+    $('#reset-btn').on('click', function() {
+        $('#repo-list').empty();
+        $('#search-box').val('');
+        $('#username-search').val('')
+        $('#generated-text').text('');
+        generateBtn();
+    })
+
 
 });
