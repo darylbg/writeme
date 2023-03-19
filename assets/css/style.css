@@ -1,0 +1,52 @@
+body {
+   
+}
+
+.inputs-section {
+    display: flex;
+    flex-direction: row;
+    padding-top: 50px;
+}
+
+
+.inputs-section > div {
+    padding: 0px 30px 0px 30px;
+}
+
+@media screen and (max-width: 800px) {
+    .inputs-section {
+        flex-wrap: wrap;
+    }
+
+    .reset-button-div,
+    .generate-button-div {
+        width: 30%;
+    }
+
+    .username-search-div,
+    .repo-search {
+        width: 70%;
+    }
+}
+
+.bi-arrow-clockwise:hover {
+    rotate: 100% !important;
+    transition: all ease-in-out 0.5s !important;
+}
+
+#search-box {
+    height: 37.6px;
+    border: 1px solid #CED4DA;
+    border-radius: 0.375rem;
+    width: 100%;
+}
+
+.repo-search ul {
+    padding: 0;
+    max-height: 300px;
+    overflow: auto;
+}
+
+.repo-search ul li {
+    list-style: none;
+}
