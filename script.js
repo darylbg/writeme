@@ -2,6 +2,7 @@
 
 $(document).ready(function() {
     require('dotenv').config()
+    console.log(process.env.API_KEY);
     
     function generateBtn() {
         if ($('#search-box').val() == '') {
@@ -16,7 +17,6 @@ $(document).ready(function() {
     function usernameSearch() {
         $('#username-search-btn').on('click', function() {
             username = $('#username-search').val();
-            console.log(username);
             $('#repo-list').empty();
 
             // github api to call username
@@ -24,7 +24,6 @@ $(document).ready(function() {
             .then(function (response) {
                 if (response.ok) {
                     response.json().then(function (data) {
-                        console.log(data);
                         for(let i = 0; i < data.length; i++) {
                             fullName = data[i].full_name;
                             var url = data[i].html_url;
@@ -61,6 +60,7 @@ $(document).ready(function() {
         });
     } 
     // browserify script.js -o bundle.js
+    
     var apiKey = process.env.API_KEY; 
     var apiUrl = 'https://api.openai.com/v1/completions';
 

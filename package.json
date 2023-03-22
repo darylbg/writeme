@@ -10,5 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "envify": "^4.1.0"
   }
 }
