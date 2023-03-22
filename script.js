@@ -60,8 +60,8 @@ $(document).ready(function() {
             generateBtn();
         });
     } 
-
-    var apiKey = process.env.API_KEY;
+    // browserify script.js -o bundle.js
+    var apiKey = process.env.API_KEY; 
     var apiUrl = 'https://api.openai.com/v1/completions';
 
     $('#readme-generate-btn').on('click', function() {
