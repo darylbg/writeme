@@ -10,7 +10,7 @@ body {
 }
 
 .heading {
-    padding-top: 25px;
+    padding: 20px;
 }
 
 .instructions {
@@ -30,6 +30,19 @@ body {
     height: 40px;
 }
 
+@media screen and (max-width: 800px) {
+    .inputs-section > div {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .reset-button-div,
+    .username-search-div {
+        margin-bottom: 25px;
+    }
+}
+
 .reset-button-div button {
     background-color: var(--light-brown);
     border: none;
@@ -38,9 +51,14 @@ body {
 }
 
 .reset-button-div button:hover {
+    transform: rotate(90deg);
+    transition: transform 0.2s ease-in-out;
+    background-color: var(--light-brown);
+}
+
+.reset-button-div button:focus {
     transform: rotate(360deg);
     transition: transform 0.5s ease-in-out;
-    background-color: var(--light-brown);
 }
 
 .reset-button-div button i {
@@ -81,17 +99,37 @@ input[type="text"] {
 }
 
 #readme-generate-btn {
+    box-sizing: border-box;
     background-color: var(--teal);
     color: var(--grey);
     border: none;
     height: 40px;
 }
 
-#readme-generate-btn:hover {
+#readme-generate-btn:hover,
+.copy-button:hover {
     border: 2px solid var(--teal);
     color: var(--teal);
     background-color: var(--grey);
     transition: all ease-in-out 0s;
+}
+
+#readme-generate-btn:active,
+.copy-button:active {
+    transform: scale(0.9);
+    transition: all ease-in 0.1s;
+}
+
+@media screen and (max-width: 800px) {
+    #readme-generate-btn {
+        float: right;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    #readme-generate-btn p {
+        display: none !important;
+    }
 }
 
 #readme-generate-btn p,
@@ -171,6 +209,12 @@ input[type="text"] {
     padding: 50px;
 }
 
+@media screen and (max-width: 800px) {
+    .code-block {
+        padding: 50px 20px 50px 20px;
+    }
+}
+
 pre {
     background-color: var(--dark-brown);
     padding: 1rem;
@@ -195,6 +239,12 @@ code {
     cursor: pointer;
 }
 
+@media screen and (max-width: 800px) {
+    .copy-button {
+        right: 25px;
+    }
+}
+
 /*--styling a custom scrollbar--*/
 .code-block .pre::-webkit-scrollbar {
     width: 7px;               
@@ -210,15 +260,14 @@ code {
     border-radius: 20px;       
 }
 
-#loading {
-    height: 40px;
-    width: 40px;
+#loading-spinner {
     position: absolute;
-    top: 55px;
-    left: 55px;
-    display: none;
+    top: 53px;
+    left: 53px;
 }
 
-#loading img {
-    height: 100%;
+@media screen and (max-width: 800px) {
+    #loading-spinner {
+        left: 25px;
+    }
 }

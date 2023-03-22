@@ -17,7 +17,7 @@ $(document).ready(function() {
             $('#repo-list').empty();
 
             // github api to call username
-            fetch("https://api.github.com/users/" + username + "/repos")
+            fetch("https://api.github.com/users/" + username + "/repos?per_page=100")
             .then(function (response) {
                 if (response.ok) {
                     response.json().then(function (data) {
@@ -58,19 +58,11 @@ $(document).ready(function() {
         });
     } 
 
-    // function loadingDisplay() {
-    //     if ($('#generated-text').val() == '') {
-    //         $('#loading').css('display', 'block');
-    //     } else if ($('#generated-text').text() != '') {
-    //         $('#loading').css('display', 'none');
-    //     }
-    // } loadingDisplay();
-
-    var apiKey = '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';
+    var apiKey = '';
     var apiUrl = 'https://api.openai.com/v1/completions';
 
     $('#readme-generate-btn').on('click', function() {
-        
+        $('#loading-spinner').show();
 
         var prompt = "Please generate a README file in markdown format for my project hosted on GitHub" + repoUrl + "The README file should include the following sections:" + 
                         "1. Description - A brief introduction to the project." + 
@@ -100,6 +92,7 @@ $(document).ready(function() {
             success: function(response) {
                 var text = response.choices[0].text;
                 $('#generated-text').text(text);
+                $('#loading-spinner').hide();
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log('Error: ' + textStatus);
@@ -111,7 +104,7 @@ $(document).ready(function() {
     $('.copy-button').on('click', function() {
         var code = $(this).prev('pre').find('code').html();
         copyToClipboard(code);
-        alert('Code copied to clipboard!');
+        // alert('Code copied to clipboard!');
       });
       
       function copyToClipboard(text) {
