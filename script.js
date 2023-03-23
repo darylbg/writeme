@@ -1,8 +1,4 @@
-
-
 $(document).ready(function() {
-    require('dotenv').config()
-    console.log(process.env.API_KEY);
     
     function generateBtn() {
         if ($('#search-box').val() == '') {
@@ -61,7 +57,7 @@ $(document).ready(function() {
     } 
     // browserify script.js -o bundle.js
     
-    var apiKey = process.env.API_KEY; 
+    var apiKey = ''; 
     var apiUrl = 'https://api.openai.com/v1/completions';
 
     $('#readme-generate-btn').on('click', function() {
