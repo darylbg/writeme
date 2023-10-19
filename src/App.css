@@ -1,38 +1,59 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+:root {
+  --text: #1b1315;
+  --background: #ffffff;
+  --primary: #996633;
+  --secondary: #ebe0d6;
+  --accent: #800020;
+  --code-font: 'Source Code Pro', monospace;
+  --rubik-font: 'Rubik', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/* welcome section */
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.welcome-section {
+  width: 30%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--secondary);
+  padding: 50px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.welcome-intro {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.welcome-intro h1,
+.welcome-intro h2,
+.welcome-intro h4 {
+  color: var(--primary);
+  font-family: var(--rubik-font);
 }
+
+.welcome-intro h1,
+.welcome-intro h2 {
+  font-weight: 900;
+}
+
+.welcome-intro h4 {
+  font-weight: 500;
+  margin: 0;
+}
+
+.welcome-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
