@@ -16,19 +16,6 @@ body {
   margin: 0;
 }
 
-.app {
-  position: relative;
-}
-
-/* home-link for small devices */
-
-.home-link-small {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  display: none;
-}
-
 /* welcome section */
 
 .welcome-section {
@@ -44,7 +31,6 @@ body {
   margin-top: 25px;
 }
 
-.home-link-small button,
 .home-link button {
   border: none;
   background-color: transparent;
@@ -53,9 +39,9 @@ body {
   font-size: 20px;
 }
 
-.home-link-small button,
 .home-link button:hover {
   cursor: pointer;
+  color: var(--dark-accent);
 }
 
 .welcome-intro {
@@ -128,4 +114,30 @@ body {
 
 .continue-button button svg {
   margin-left: 15px;
+}
+
+/* content section */
+
+.content-section {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+    display: flex;
+}
+
+.username-search,
+.repo-search {
+    display: flex;
+    flex-direction: column;
+    vertical-align: bottom;
+    margin: 0 10px;
+}
+
+.writeme-btn {
+    display: flex;
+    align-items: end;
+    margin: 0 10px;
 }
