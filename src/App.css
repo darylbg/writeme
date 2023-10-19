@@ -1,29 +1,61 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=Bebas+Neue&family=Oswald&family=Poppins&family=Roboto:wght@400;900&display=swap');
 :root {
   --text: #1b1315;
   --background: #ffffff;
   --primary: #996633;
   --secondary: #ebe0d6;
   --accent: #800020;
-  --code-font: 'Source Code Pro', monospace;
-  --rubik-font: 'Rubik', sans-serif;
+  --dark-accent: #720018;
+  --code-font: "Source Code Pro", monospace;
+  --roboto-font: "Rubik", sans-serif;
+  --poppins-font: 'Poppins', sans-serif;
 }
 
 body {
   margin: 0;
 }
 
+.app {
+  position: relative;
+}
+
+/* home-link for small devices */
+
+.home-link-small {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: none;
+}
+
 /* welcome section */
 
 .welcome-section {
-  width: 30%;
   height: 100vh;
   overflow: hidden;
   background-color: var(--secondary);
-  padding: 50px;
   display: flex;
   flex-direction: column;
+}
+
+.home-link {
+  flex: 0;
+  margin-top: 25px;
+}
+
+.home-link-small button,
+.home-link button {
+  border: none;
+  background-color: transparent;
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.home-link-small button,
+.home-link button:hover {
+  cursor: pointer;
 }
 
 .welcome-intro {
@@ -31,29 +63,69 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  padding-bottom: 20px;
 }
 
-.welcome-intro h1,
-.welcome-intro h2,
-.welcome-intro h4 {
+.welcome-intro p {
   color: var(--primary);
-  font-family: var(--rubik-font);
-}
-
-.welcome-intro h1,
-.welcome-intro h2 {
+  margin: 0;
+  font-size: 35px;
+  font-family: 'Roboto', sans-serif;
   font-weight: 900;
 }
 
-.welcome-intro h4 {
-  font-weight: 500;
-  margin: 0;
+.welcome-intro p:first-child {
+  padding-bottom: 50px;
+}
+
+.welcome-intro p:last-child {
+  font-size: 25px;
+  font-weight: 400;
 }
 
 .welcome-text {
-  flex: 1;
+  flex: 0 0 50%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  padding-top: 20px;
 }
 
+.welcome-text p {
+  font-family: "Poppins", sans-serif;
+  color: #1b1315;
+  flex: 1;
+}
+
+.continue-button {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.continue-button button {
+  height: 50px;
+  padding: 0 25px;
+  font-family: var(--poppins-font);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  background-color: var(--accent);
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+
+.continue-button button:hover {
+  cursor: pointer;
+  background-color: var(--dark-accent);
+}
+
+.continue-button button:hover > svg {
+  transform: translateX(10px);
+  transition: all 0.2s ease-in-out;
+}
+
+.continue-button button svg {
+  margin-left: 15px;
+}
