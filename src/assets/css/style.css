@@ -122,22 +122,64 @@ body {
   width: 100vw;
   display: flex;
   justify-content: center;
+  margin-top: 10vh;
 }
 
 .menu {
     display: flex;
+    flex-direction: row;
 }
 
 .username-search,
-.repo-search {
+.repo-select {
     display: flex;
     flex-direction: column;
     vertical-align: bottom;
     margin: 0 10px;
 }
 
+.username-search .input-group input {
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid var(--text);
+  border-radius: 4px;
+}
+
+/* react-select custom styling */
+/* .username-search .input-group input,
+.react-select__control {
+  border: 1px solid var(--text) !important;
+  box-shadow: none !important;
+}
+
+.username-search .input-group input:hover,
+.react-select__control:hover {
+  border: 1px solid grey !important;
+  box-shadow: none !important;
+}
+
+.username-search .input-group input:active,
+.react-select__control:active {
+  border: 1px solid var(--accent) !important;
+  box-shadow: 0 0 0 1px var(--accent) !important;
+}
+
+.username-search .input-group input:focus,
+.react-select__control:focus {
+  border: 1px solid var(--accent) !important;
+  box-shadow: 0 0 0 1px var(--dark-accent) !important;
+} */
+
 .writeme-btn {
     display: flex;
+    flex-direction: row;
     align-items: end;
     margin: 0 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .menu {
+    display: flex;
+    flex-direction: column;
+}
 }

@@ -1,16 +1,35 @@
 import React, { useState, useEffect, useRef } from "react";
-import SelectSearch from "react-select-search";
-import SlimSelect from "slim-select";
-// import "slim-select/slimselect/slimselect.css";
-import "react-select-search/style.css";
-import { FiArrowRight } from "react-icons/fi";
+import Select from "react-select";
+import { FiArrowRight, FiSearch } from "react-icons/fi";
+import axios from "axios";
 
 export default function ContentPage(toggleWelcomeOpen) {
-  const options = [
-    { name: "Swedish", value: "sv" },
-    { name: "English", value: "en" },
-  ];
+  const [username, setUsername] = useState("");
+  const [userRepos, setUserRepos] = useState([]);
+  const [selectedRepo, setSelectedRepo] = useState(null);
 
+  const handleUsernameInput = (e) => {
+    e.preventDefault();
+  };
+
+  const handleGetUserRepos = async (e) => {
+    e.preventDefault();
+    const url = `https://api.github.com/users/${username}/repos`;
+    try {
+      const response = await axios.get(url);
+      const data = response.data;
+      const githubData = data.map((repo) => {
+        return { value: repo.url, label: repo.name };
+      });
+      setUserRepos(githubData);
+
+      if (githubData.length > 0) {
+        setSelectedRepo(githubData[0]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <section className="content-section">
@@ -18,17 +37,34 @@ export default function ContentPage(toggleWelcomeOpen) {
         <div className="menu">
           <div className="username-search">
             <label>Search Github username</label>
-            <input type="text" />
+            <div className="input-group">
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              <FiSearch onClick={handleGetUserRepos} />
+            </div>
           </div>
-          <div className="repo-search">
+          <div className="repo-select">
             <label>Select desired repository</label>
-            <select>
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
-              <option value="option4">Option 4</option>
-              <option value="option5">Option 5</option>
-            </select>
+            <Select
+              options={userRepos}
+              value={selectedRepo}
+              onChange={(selectedOption) => setSelectedRepo(selectedOption)}
+              className="react-select-container"
+              classNamePrefix="react-select"
+              // styles={{
+              //   control: (baseStyles, state) => ({
+              //     ...baseStyles,
+              //     height: "40px",
+              //     // border: '1px solid #1b1315',
+              //     border: state.isSelected
+              //       ? "1px solid red"
+              //       : "1px solid #1b1315",
+              //   }),
+              // }}
+            />
           </div>
           <div className="writeme-btn">
             <button>
