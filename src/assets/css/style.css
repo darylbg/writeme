@@ -1,15 +1,16 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Barlow&family=Bebas+Neue&family=Oswald&family=Poppins&family=Roboto:wght@400;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Barlow&family=Bebas+Neue&family=Oswald&family=Poppins&family=Roboto:wght@400;900&display=swap");
 :root {
   --text: #1b1315;
   --background: #ffffff;
   --primary: #996633;
   --secondary: #ebe0d6;
+  --secondary-darker: #e2d3c5;
   --accent: #800020;
   --dark-accent: #720018;
+  --focus-highlight: #2684ff;
   --code-font: "Source Code Pro", monospace;
   --roboto-font: "Rubik", sans-serif;
-  --poppins-font: 'Poppins', sans-serif;
+  --poppins-font: "Poppins", sans-serif;
 }
 
 body {
@@ -56,7 +57,7 @@ body {
   color: var(--primary);
   margin: 0;
   font-size: 35px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 900;
 }
 
@@ -126,60 +127,168 @@ body {
 }
 
 .menu {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .username-search,
 .repo-select {
-    display: flex;
-    flex-direction: column;
-    vertical-align: bottom;
-    margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  vertical-align: bottom;
+  margin: 0 10px;
+}
+
+.username-search .input-group {
+  height: 40px;
+  display: flex;
 }
 
 .username-search .input-group input {
-  height: 40px;
+  height: 100%;
   box-sizing: border-box;
-  border: 1px solid var(--text);
-  border-radius: 4px;
+  border-top: 1px solid var(--text);
+  border-bottom: 1px solid var(--text);
+  border-left: 1px solid var(--text);
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-right: none;
+  padding: 2px 8px;
+  font-family: var(--poppins-font);
+  font-size: 16px;
 }
 
-/* react-select custom styling */
-/* .username-search .input-group input,
+.username-search .input-group input:focus {
+  /* border-top: 1px solid #2684ff;
+  border-left: 1px solid #2684ff;
+  border-bottom: 1px solid #2684ff; */
+  box-shadow: 0 -1px 0 0 var(--focus-highlight), -1px 0 0 0 var(--focus-highlight), 0 1px 0 0 var(--focus-highlight);
+  outline: none;
+  transition: all 100ms;
+}
+
+.username-search .input-group input:focus + * {
+  /* border-top: 1px solid #2684ff;
+  border-right: 1px solid #2684ff;
+  border-bottom: 1px solid #2684ff; */
+  box-shadow: 0 1px 0 0 var(--focus-highlight), 1px 0 0 0 var(--focus-highlight), 0 -1px 0 0 var(--focus-highlight);
+  transition: all 100ms;
+}
+
+.username-search .input-group .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  border-top: 1px solid var(--text);
+  border-right: 1px solid var(--text);
+  border-bottom: 1px solid var(--text);
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  cursor: pointer;
+  background-color: var(--secondary);
+  border-left: 1px solid var(--text);
+}
+
+.username-search .input-group .icon svg {
+  height: 15px;
+  width: 15px;
+  color: var(--text);
+}
+
+/* react-select */
+
 .react-select__control {
+  height: 40px;
   border: 1px solid var(--text) !important;
-  box-shadow: none !important;
 }
 
-.username-search .input-group input:hover,
-.react-select__control:hover {
-  border: 1px solid grey !important;
-  box-shadow: none !important;
+.react-select__value-container {
+  font-family: var(--poppins-font) !important;
+  font-size: 16px;
 }
 
-.username-search .input-group input:active,
-.react-select__control:active {
-  border: 1px solid var(--accent) !important;
-  box-shadow: 0 0 0 1px var(--accent) !important;
+/* .react-select__input {
+  font-family: var(--poppins-font) !important;
 }
-
-.username-search .input-group input:focus,
-.react-select__control:focus {
-  border: 1px solid var(--accent) !important;
-  box-shadow: 0 0 0 1px var(--dark-accent) !important;
+.react-select__input::placeholder {
+  font-family: var(--poppins-font) !important;
+  font-size: 16px;
 } */
 
+.react-select__single-value {
+  font-family: var(--poppins-font) !important;
+  font-size: 16px !important;
+}
+
+.react-select__indicators {
+  background-color: var(--secondary);
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-left: 1px solid var(--text);
+}
+
+.username-search .input-group .icon:hover,
+.react-select__indicators:hover {
+  cursor: pointer;
+  background-color: var(--secondary-darker);
+  transition: all 0.2s ease-in-out;
+}
+
+.react-select__indicator {
+  display: none;
+}
+
+.react-select__indicator-separator {
+  display: none !important;
+}
+
+.css-tj5bde-Svg {
+  color: var(--text) !important;
+}
+
+.react-select__option {
+  font-family: var(--poppins-font) !important;
+}
+
 .writeme-btn {
-    display: flex;
-    flex-direction: row;
-    align-items: end;
-    margin: 0 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  margin: 0 10px;
+}
+
+.writeme-btn button {
+  height: 40px;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+    font-weight: 600;
+    font-family: var(--poppins-font);
+}
+
+.writeme-btn button:hover {
+  background-color: var(--dark-accent);
+  cursor: pointer;
+}
+
+.writeme-btn button:hover > svg {
+  transform: translateX(5px);
+  transition: all 0.2s ease-in-out;
+}
+
+.writeme-btn button svg {
+  padding-left: 10px;
 }
 
 @media screen and (max-width: 768px) {
   .menu {
     display: flex;
     flex-direction: column;
-}
+  }
 }

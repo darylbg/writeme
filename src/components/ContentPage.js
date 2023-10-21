@@ -41,9 +41,19 @@ export default function ContentPage(toggleWelcomeOpen) {
               <input
                 type="text"
                 value={username}
+                placeholder="@github..."
                 onChange={(e) => setUsername(e.target.value)}
+                style={{
+                  control: (baseStyles, state) => ({
+                    ...baseStyles,
+                    fontFamily: '"Poppins", sans-serif',
+                    fontSize: '16px'
+                  }),
+                }}
               />
-              <FiSearch onClick={handleGetUserRepos} />
+              <div className="icon">
+                <FiSearch onClick={handleGetUserRepos} />
+              </div>
             </div>
           </div>
           <div className="repo-select">
@@ -54,21 +64,11 @@ export default function ContentPage(toggleWelcomeOpen) {
               onChange={(selectedOption) => setSelectedRepo(selectedOption)}
               className="react-select-container"
               classNamePrefix="react-select"
-              // styles={{
-              //   control: (baseStyles, state) => ({
-              //     ...baseStyles,
-              //     height: "40px",
-              //     // border: '1px solid #1b1315',
-              //     border: state.isSelected
-              //       ? "1px solid red"
-              //       : "1px solid #1b1315",
-              //   }),
-              // }}
             />
           </div>
           <div className="writeme-btn">
             <button>
-              writeme
+              WRITEME
               <FiArrowRight />
             </button>
           </div>
