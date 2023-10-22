@@ -126,9 +126,14 @@ body {
 /* content section */
 
 .content-section {
+  /* display: flex;
+  justify-content: center; */
+  margin-top: 8%;
+}
+
+.menu-row {
   display: flex;
   justify-content: center;
-  margin-top: 8%;
 }
 
 .menu > * {
@@ -138,6 +143,7 @@ body {
 .menu {
   display: flex;
   width: 100%;
+  max-width: 800px;
 }
 
 .username-search,
