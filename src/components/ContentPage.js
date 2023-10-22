@@ -7,6 +7,7 @@ export default function ContentPage(toggleWelcomeOpen) {
   const [username, setUsername] = useState("");
   const [userRepos, setUserRepos] = useState([]);
   const [selectedRepo, setSelectedRepo] = useState(null);
+  const [inputErrorMsg, setInputErrorMsg] = useState("");
 
   const handleUsernameInput = (e) => {
     e.preventDefault();
@@ -17,64 +18,82 @@ export default function ContentPage(toggleWelcomeOpen) {
     const url = `https://api.github.com/users/${username}/repos`;
     try {
       const response = await axios.get(url);
-      const data = response.data;
-      const githubData = data.map((repo) => {
-        return { value: repo.url, label: repo.name };
-      });
-      setUserRepos(githubData);
+      const data = await response.data;
 
-      if (githubData.length > 0) {
+      if (data.length === 0) {
+        setInputErrorMsg("No user found!");
+        setUserRepos([]);
+        setSelectedRepo(null);
+      } else {
+        const githubData = data.map((repo) => ({
+          value: repo.url,
+          label: repo.name,
+        }));
+        setUserRepos(githubData);
         setSelectedRepo(githubData[0]);
+        setInputErrorMsg(""); // Clear any previous error message
       }
     } catch (error) {
       console.log(error);
+      setInputErrorMsg("No user found!");
+      setSelectedRepo(null);
     }
   };
 
   return (
-    <section className="content-section">
-      <div className="content">
+    <>
+      <section className="content-section">
         <div className="menu">
           <div className="username-search">
-            <label>Search Github username</label>
-            <div className="input-group">
-              <input
-                type="text"
-                value={username}
-                placeholder="@github..."
-                onChange={(e) => setUsername(e.target.value)}
-                style={{
-                  control: (baseStyles, state) => ({
-                    ...baseStyles,
-                    fontFamily: '"Poppins", sans-serif',
-                    fontSize: '16px'
-                  }),
-                }}
-              />
-              <div className="icon">
-                <FiSearch onClick={handleGetUserRepos} />
-              </div>
+            <label htmlFor="">Search Github username</label>
+            <div className="error-div">{inputErrorMsg}</div>
+            <input
+              type="text"
+              value={username}
+              placeholder="username"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <div className="username-search-icon">
+              <FiSearch onClick={handleGetUserRepos} />
             </div>
           </div>
           <div className="repo-select">
-            <label>Select desired repository</label>
+            <label htmlFor="">Select repository</label>
+            <div className="error-div"></div>
             <Select
               options={userRepos}
               value={selectedRepo}
-              onChange={(selectedOption) => setSelectedRepo(selectedOption)}
-              className="react-select-container"
+              unstyled={true}
               classNamePrefix="react-select"
+              className="react-select-container"
+              onChange={(selectedOption) => setSelectedRepo(selectedOption)}
+              styles={{
+                control: (provided, state) => ({
+                  ...provided,
+                  border: state.isFocused ? "1px solid #1b1315" : "none",
+                  borderRadius: state.isFocused ? "4px" : "none",
+                  backgroundColor: state.isSelected ? "red" : "transparent",
+                }),
+                option: (provided, state) => ({
+                  ...provided,
+                  backgroundColor: state.isSelected ? "#720018" : "transparent",
+                  color: state.isSelected ? "white" : "#1b1315",
+                }),
+                placeholder: (provided) => ({
+                  ...provided,
+                  color: "#7c7c7d", // Set your preferred placeholder color
+                }),
+              }}
             />
           </div>
-          <div className="writeme-btn">
+          <div className="writeme-button">
             <button>
               WRITEME
               <FiArrowRight />
             </button>
           </div>
         </div>
-        <div className="display"></div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
