@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Select from "react-select";
-import { Resizable } from "react-resizable";
+import SplitPane from 'react-split-pane';
 import { FiArrowRight, FiSearch } from "react-icons/fi";
 import axios from "axios";
 
@@ -98,7 +98,18 @@ export default function ContentPage(toggleWelcomeOpen) {
             </div>
           </div>
         </div>
-        <div className="display-row"></div>
+        <div className="display-row">
+        <SplitPane
+          split="vertical"
+          minSize={50}
+          maxSize={300}
+          defaultSize={100}
+          style={{ background: '#f0f0f0', borderLeft: '1px solid #ccc' }}
+        >
+          <div style={{ background: '#fff' }}>Pane 1</div>
+          <div style={{ background: '#eee' }}>Pane 2</div>
+        </SplitPane>
+        </div>
       </section>
     </>
   );
