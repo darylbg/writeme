@@ -6,11 +6,13 @@ import "./assets/css/style.css";
 function App() {
   const [continueBtn, setContinueBtn] = useState(true);
 
-  const toggleWelcomeClose = () => {
+  const toggleWelcomeClose = (e) => {
+    e.preventDefault();
     setContinueBtn(false);
   };
 
-  const toggleWelcomeOpen = () => {
+  const toggleWelcomeOpen = (e) => {
+    e.preventDefault();
     setContinueBtn(true);
   };
 

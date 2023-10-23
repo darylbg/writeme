@@ -1,14 +1,33 @@
 import React, { useState, useEffect, useRef } from "react";
+import IdeContent from "./IdeContent";
 import Select from "react-select";
-import SplitPane from 'react-split-pane';
+import SplitPane from "react-split-pane";
 import { FiArrowRight, FiSearch } from "react-icons/fi";
 import axios from "axios";
+import "../assets/css/splitPaneStyle.css";
 
 export default function ContentPage(toggleWelcomeOpen) {
   const [username, setUsername] = useState("");
   const [userRepos, setUserRepos] = useState([]);
   const [selectedRepo, setSelectedRepo] = useState(null);
   const [inputErrorMsg, setInputErrorMsg] = useState("");
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [showPanes, setShowPanes] = useState(false);
+
+  useEffect(() => {
+    // Function to update window width
+    const updateWindowWidth = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Attach the event listener to the window's resize event
+    window.addEventListener("resize", updateWindowWidth);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("resize", updateWindowWidth);
+    };
+  }, []);
 
   const handleUsernameInput = (e) => {
     e.preventDefault();
@@ -99,16 +118,20 @@ export default function ContentPage(toggleWelcomeOpen) {
           </div>
         </div>
         <div className="display-row">
-        <SplitPane
-          split="vertical"
-          minSize={50}
-          maxSize={300}
-          defaultSize={100}
-          style={{ background: '#f0f0f0', borderLeft: '1px solid #ccc' }}
-        >
-          <div style={{ background: '#fff' }}>Pane 1</div>
-          <div style={{ background: '#eee' }}>Pane 2</div>
-        </SplitPane>
+          {showPanes ? (
+            <SplitPane
+              split="vertical"
+              minSize={230}
+              maxSize={windowWidth - 236}
+              defaultSize="50%"
+              className="content-split-pane"
+            >
+              <IdeContent showPanes={showPanes} setShowPanes={setShowPanes} />
+              <div className="">panel 2</div>
+            </SplitPane>
+          ) : (
+            <IdeContent showPanes={showPanes} setShowPanes={setShowPanes} />
+          )}
         </div>
       </section>
     </>

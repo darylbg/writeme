@@ -8,9 +8,11 @@
   --accent: #800020;
   --dark-accent: #720018;
   --light-grey: #7c7c7d;
+  --dark-grey: #1d1f22;
+  --mid-grey: #23272e;
   --focus-highlight: #2684ff;
   --code-font: "Source Code Pro", monospace;
-  --roboto-font: "Rubik", sans-serif;
+  --roboto-font: "Roboto", sans-serif;
   --poppins-font: "Poppins", sans-serif;
   --font-large: 16px;
   --font-medium: 15px;
@@ -149,9 +151,13 @@ body {
 .username-search,
 .repo-select {
   flex: 1;
-  padding: 0 15px;
+  /* padding: 0 15px; */
   display: flex;
   flex-direction: column;
+}
+
+.repo-select {
+  padding: 0 30px;
 }
 
 .username-search label,
@@ -171,7 +177,7 @@ body {
   height: 40px;
   border: 1px solid var(--text);
   box-sizing: border-box;
-  font-size:var(--font-large);
+  font-size: var(--font-large);
   border-radius: 4px;
   font-family: var(--poppins-font);
 }
@@ -217,7 +223,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 15px;
   cursor: pointer;
 }
 
@@ -244,7 +249,8 @@ body {
 
 .react-select__menu {
   margin-top: 8px;
-  box-shadow: 1px 1px 15px rgb(0,0,0,0.2);
+  box-shadow: 1px 1px 15px rgb(0, 0, 0, 0.2);
+  background-color: white;
 }
 
 .react-select__menu-list {
@@ -265,7 +271,7 @@ body {
 
 .writeme-button {
   flex: 0;
-  padding: 0 15px;
+  /* padding: 0 15px; */
   display: flex;
   align-items: end;
   flex-direction: row;
@@ -307,52 +313,75 @@ body {
   }
 }
 
-.Resizer {
-  background: #000;
-  opacity: 0.2;
-  z-index: 1;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding;
-  background-clip: padding-box;
+/* split pane content */
+
+.display-row {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
 }
 
-.Resizer:hover {
-  -webkit-transition: all 2s ease;
-  transition: all 2s ease;
+.content-split-pane {
+  margin: 0 50px;
 }
 
-.Resizer.horizontal {
-  height: 11px;
-  margin: -5px 0;
-  border-top: 5px solid rgba(255, 255, 255, 0);
-  border-bottom: 5px solid rgba(255, 255, 255, 0);
-  cursor: row-resize;
+/* ide pane */
+
+.ide-pane {
   width: 100%;
+  /* max-width: 800px; */
 }
 
-.Resizer.horizontal:hover {
-  border-top: 5px solid rgba(0, 0, 0, 0.5);
-  border-bottom: 5px solid rgba(0, 0, 0, 0.5);
+.ide-menu {
+  background-color: var(--dark-grey);
+  display: flex;
+  padding: 15px;
+  border-top-left-radius: 12px;
 }
 
-.Resizer.vertical {
-  width: 11px;
-  margin: 0 -5px;
-  border-left: 5px solid rgba(255, 255, 255, 0);
-  border-right: 5px solid rgba(255, 255, 255, 0);
-  cursor: col-resize;
+.ide-menu-items-left {
+  flex: 1;
 }
 
-.Resizer.vertical:hover {
-  border-left: 5px solid rgba(0, 0, 0, 0.5);
-  border-right: 5px solid rgba(0, 0, 0, 0.5);
+.ide-menu button {
+  background-color: var(--dark-grey);
+  border: 1px solid var(--light-grey);
+  border-radius: 4px;
+  color: white;
+  height: 30px;
+  padding: 0 10px;
+  font-family: var(--roboto-font);
 }
-.Resizer.disabled {
-  cursor: not-allowed;
+
+.ide-menu-items-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 }
-.Resizer.disabled:hover {
-  border-color: transparent;
+
+.ide-menu-item {
+  height: 30px;
+  width: 30px;
+  border: 1px solid var(--light-grey);
+  border-radius: 4px;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ide-menu button:hover,
+.ide-menu-item:hover {
+  background-color: var(--text);
+  cursor: pointer;
+  border-color: white;
+  transition: all 0.2s ease-in-out;
+}
+
+.ide-menu-item svg {
+  color: white;
+}
+
+.ide-content {
+  background-color: var(--mid-grey);
 }
