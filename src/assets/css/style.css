@@ -385,3 +385,11 @@ body {
 .ide-content {
   background-color: var(--mid-grey);
 }
+
+.ide-tooltip {
+  background-color: var(--dark-grey);
+  font-family: var(--roboto-font);
+  /* border: 1px solid; */
+  box-sizing: border-box;
+}
+
