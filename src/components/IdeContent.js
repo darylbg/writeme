@@ -4,7 +4,7 @@ import { Tooltip as ReactTooltip } from "react-tooltip";
 
 export default function IdeContent({ setShowPanes, showPanes }) {
   const [copied, setCopied] = useState(false);
-  
+
   const toggleShowPanes = (e) => {
     e.preventDefault();
     setShowPanes(!showPanes);
@@ -61,7 +61,7 @@ export default function IdeContent({ setShowPanes, showPanes }) {
               id="copy-tooltip"
               place="top"
               border={copied ? "1px solid #07E607" : "1px solid #7c7c7d"}
-              content={copied ? 'Copied' : 'Copy'}
+              content={copied ? 'Copied!' : 'Copy'}
               style={{
                 color: copied ? '#07E607': 'white',
                 fontSize: '12px'

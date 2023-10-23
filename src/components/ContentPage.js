@@ -20,10 +20,7 @@ export default function ContentPage(toggleWelcomeOpen) {
       setWindowWidth(window.innerWidth);
     };
 
-    // Attach the event listener to the window's resize event
     window.addEventListener("resize", updateWindowWidth);
-
-    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener("resize", updateWindowWidth);
     };
@@ -51,10 +48,10 @@ export default function ContentPage(toggleWelcomeOpen) {
         }));
         setUserRepos(githubData);
         setSelectedRepo(githubData[0]);
-        setInputErrorMsg(""); // Clear any previous error message
+        setInputErrorMsg("");
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setInputErrorMsg("No user found!");
       setSelectedRepo(null);
     }
@@ -74,8 +71,11 @@ export default function ContentPage(toggleWelcomeOpen) {
                 placeholder="username"
                 onChange={(e) => setUsername(e.target.value)}
               />
-              <div className="username-search-icon">
-                <FiSearch onClick={handleGetUserRepos} />
+              <div
+                className="username-search-icon"
+                onClick={handleGetUserRepos}
+              >
+                <FiSearch />
               </div>
             </div>
             <div className="repo-select">
@@ -109,8 +109,16 @@ export default function ContentPage(toggleWelcomeOpen) {
                 }}
               />
             </div>
-            <div className="writeme-button">
-              <button>
+            <div
+              className={`writeme-button ${
+                selectedRepo !== null
+                  ? "writeme-btn-enabled"
+                  : "writeme-btn-disabled"
+              }`}
+            >
+              <button
+                disabled={selectedRepo === null}
+              >
                 WRITEME
                 <FiArrowRight />
               </button>

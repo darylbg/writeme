@@ -226,6 +226,12 @@ body {
   cursor: pointer;
 }
 
+@media screen and (max-width: 650px) {
+  .username-search {
+    margin: 10px 30px;
+  }
+}
+
 /* repo select specific styling */
 
 .react-select__value-container {
@@ -251,6 +257,7 @@ body {
   margin-top: 8px;
   box-shadow: 1px 1px 15px rgb(0, 0, 0, 0.2);
   background-color: white;
+  /* z-index: 99; */
 }
 
 .react-select__menu-list {
@@ -279,7 +286,7 @@ body {
 
 .writeme-button button {
   height: 40px;
-  background-color: var(--accent);
+  /* background-color: var(--accent); */
   display: flex;
   align-items: center;
   color: white;
@@ -291,13 +298,21 @@ body {
   font-family: var(--poppins-font);
 }
 
-.writeme-button button:hover {
+.writeme-btn-disabled button {
+  background-color: var(--light-grey);
+}
+
+.writeme-btn-enabled button {
+  background-color: var(--accent);
+}
+
+.writeme-btn-enabled button:hover {
   background-color: var(--dark-accent);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 
-.writeme-button button:hover > svg {
+.writeme-btn-enabled button:hover > svg {
   transform: translateX(5px);
   transition: all 0.2s ease-in-out;
 }
@@ -310,6 +325,11 @@ body {
 @media screen and (max-width: 650px) {
   .menu {
     flex-direction: column;
+  }
+
+  .writeme-button {
+    justify-content: flex-end;
+    padding: 20px 30px 0 0;
   }
 }
 
