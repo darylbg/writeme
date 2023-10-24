@@ -1,6 +1,7 @@
 import { useState } from "react";
 import WelcomePage from "./components/WelcomePage";
 import ContentPage from "./components/ContentPage";
+import { AiContextProvider } from "./context/AiContext";
 import "./assets/css/style.css";
 
 function App() {
@@ -17,16 +18,18 @@ function App() {
   };
 
   return (
-    <div className="app">
-      {continueBtn ? (
-        <WelcomePage
-          toggleWelcomeClose={toggleWelcomeClose}
-          continueBtn={continueBtn}
-        />
-      ) : (
-        <ContentPage toggleWelcomeOpen={toggleWelcomeOpen} />
-      )}
-    </div>
+    <AiContextProvider>
+      <div className="app">
+        {continueBtn ? (
+          <WelcomePage
+            toggleWelcomeClose={toggleWelcomeClose}
+            continueBtn={continueBtn}
+          />
+        ) : (
+          <ContentPage toggleWelcomeOpen={toggleWelcomeOpen} />
+        )}
+      </div>
+    </AiContextProvider>
   );
 }
 

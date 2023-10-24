@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import IdeContent from "./IdeContent";
 import Select from "react-select";
 import SplitPane from "react-split-pane";
 import { FiArrowRight, FiSearch } from "react-icons/fi";
 import axios from "axios";
+import { AiContext } from "../context/AiContext";
+import PreviewPane from "./PreviewPane";
 import "../assets/css/splitPaneStyle.css";
 
 export default function ContentPage(toggleWelcomeOpen) {
@@ -13,6 +15,19 @@ export default function ContentPage(toggleWelcomeOpen) {
   const [inputErrorMsg, setInputErrorMsg] = useState("");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [showPanes, setShowPanes] = useState(false);
+
+  const { aiApidata, handleAiApiCall, isAiDataLoading } = useContext(AiContext);
+
+  console.log("loading?", isAiDataLoading);
+
+  const query = {
+    query: "Give a history of napoleon, 200 words",
+  };
+
+  const handleReadmeGenerate = () => {
+    // e.preventDefault();
+    handleAiApiCall(query);
+  };
 
   useEffect(() => {
     // Function to update window width
@@ -32,7 +47,7 @@ export default function ContentPage(toggleWelcomeOpen) {
 
   const handleGetUserRepos = async (e) => {
     e.preventDefault();
-    const url = `https://api.github.com/users/${username}/repos`;
+    const url = `https://api.github.com/users/${username}/repos?per_page=100`;
     try {
       const response = await axios.get(url);
       const data = await response.data;
@@ -49,6 +64,7 @@ export default function ContentPage(toggleWelcomeOpen) {
         setUserRepos(githubData);
         setSelectedRepo(githubData[0]);
         setInputErrorMsg("");
+        console.log(githubData);
       }
     } catch (error) {
       // console.log(error);
@@ -118,6 +134,7 @@ export default function ContentPage(toggleWelcomeOpen) {
             >
               <button
                 disabled={selectedRepo === null}
+                onClick={handleReadmeGenerate}
               >
                 WRITEME
                 <FiArrowRight />
@@ -135,7 +152,7 @@ export default function ContentPage(toggleWelcomeOpen) {
               className="content-split-pane"
             >
               <IdeContent showPanes={showPanes} setShowPanes={setShowPanes} />
-              <div className="">panel 2</div>
+              <PreviewPane />
             </SplitPane>
           ) : (
             <IdeContent showPanes={showPanes} setShowPanes={setShowPanes} />

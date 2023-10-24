@@ -25,6 +25,10 @@ body {
   margin: 0;
 }
 
+.display-none {
+  display: none;
+}
+
 /* welcome section */
 
 .welcome-section {
@@ -128,14 +132,16 @@ body {
 /* content section */
 
 .content-section {
-  /* display: flex;
-  justify-content: center; */
-  margin-top: 8%;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .menu-row {
   display: flex;
   justify-content: center;
+  padding-top: 8vh;
 }
 
 .menu > * {
@@ -339,17 +345,23 @@ body {
   margin-top: 50px;
   display: flex;
   justify-content: center;
+  flex: 1;
+  overflow-y: scroll;
 }
 
 .content-split-pane {
   margin: 0 50px;
+  position: static !important;
+  height: fit-content !important;
 }
 
 /* ide pane */
 
 .ide-pane {
   width: 100%;
-  /* max-width: 800px; */
+  background-color: var(--mid-grey);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
 .ide-menu {
@@ -368,7 +380,7 @@ body {
   border: 1px solid var(--light-grey);
   border-radius: 4px;
   color: white;
-  height: 30px;
+  height: 32px;
   padding: 0 10px;
   font-family: var(--roboto-font);
 }
@@ -380,14 +392,15 @@ body {
 }
 
 .ide-menu-item {
-  height: 30px;
-  width: 30px;
+  height: 32px;
+  width: 32px;
   border: 1px solid var(--light-grey);
   border-radius: 4px;
   margin-left: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 .ide-menu button:hover,
@@ -402,10 +415,6 @@ body {
   color: white;
 }
 
-.ide-content {
-  background-color: var(--mid-grey);
-}
-
 .ide-tooltip {
   background-color: var(--dark-grey);
   font-family: var(--roboto-font);
@@ -413,3 +422,33 @@ body {
   box-sizing: border-box;
 }
 
+/* ide content */
+
+.is-ai-loading p {
+  color: white;
+}
+
+.ide-content-code p {
+  color: white;
+}
+
+/* pane 2 */
+
+.Pane2 {
+  border: 1px solid var(--dark-grey);
+  border-top-right-radius: 12px;
+}
+
+.preview-menu-header {
+  height: 31px;
+  padding: 15px;
+  background-color: var(--light-grey);
+  border-top-right-radius: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.preview-menu-header p {
+  font-family: var(--roboto-font);
+  color: white;
+}
