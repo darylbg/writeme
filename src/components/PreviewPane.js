@@ -5,7 +5,7 @@ export default function PreviewPane() {
     <div className="preview-pane">
       <div className="preview-menu">
         <div className="preview-menu-header">
-          <p>Preview</p>
+          <p>Live preview</p>
         </div>
       </div>
       <p>
