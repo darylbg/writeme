@@ -5,7 +5,7 @@ import { AiContext } from "../context/AiContext";
 import { DotPulse } from "@uiball/loaders";
 import Editor from "@monaco-editor/react";
 
-export default function IdeContent({ setShowPanes, showPanes }) {
+export default function IdeContent({handleEditorChange, markdown, setShowPanes, showPanes }) {
   const [copied, setCopied] = useState(false);
 
   const { aiApiData, handleAiApiCall, isAiDataLoading } = useContext(AiContext);
@@ -85,8 +85,14 @@ export default function IdeContent({ setShowPanes, showPanes }) {
         <div className="ide-content-code">
           <Editor
             height="90%"
-            defaultLanguage="javascript"
-            defaultValue="// some comment"
+            defaultLanguage="markdown"
+            defaultValue={markdown}
+            onChange={handleEditorChange}
+            options={{
+              minimap: {
+                enabled: false
+                }
+            }}
           />
           {/* <p style={{ paddingTop: "500px" }}>
             {aiApiData && aiApiData.response}

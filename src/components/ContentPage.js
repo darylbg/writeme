@@ -6,6 +6,7 @@ import { FiArrowRight, FiSearch } from "react-icons/fi";
 import axios from "axios";
 import { AiContext } from "../context/AiContext";
 import PreviewPane from "./PreviewPane";
+import ReactMarkdown from "react-markdown";
 import "../assets/css/splitPaneStyle.css";
 
 export default function ContentPage(toggleWelcomeOpen) {
@@ -15,10 +16,15 @@ export default function ContentPage(toggleWelcomeOpen) {
   const [inputErrorMsg, setInputErrorMsg] = useState("");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [showPanes, setShowPanes] = useState(false);
+  const [markdown, setMarkdown] = useState(null);
 
   const { aiApidata, handleAiApiCall, isAiDataLoading } = useContext(AiContext);
 
-  console.log("loading?", isAiDataLoading);
+  useEffect(() => {
+    if (aiApidata) {
+      setMarkdown(aiApidata)
+    }
+  })
 
   const query = {
     query: "Give a history of napoleon, 200 words",
@@ -71,6 +77,11 @@ export default function ContentPage(toggleWelcomeOpen) {
       setInputErrorMsg("No user found!");
       setSelectedRepo(null);
     }
+  };
+
+  const handleEditorChange = (value, event) => {
+    // Update the markdown content when the editor changes
+    setMarkdown(value);
   };
 
   return (
@@ -151,11 +162,21 @@ export default function ContentPage(toggleWelcomeOpen) {
               defaultSize="50%"
               className="content-split-pane"
             >
-              <IdeContent showPanes={showPanes} setShowPanes={setShowPanes} />
+              <IdeContent
+                handleEditorChange={handleEditorChange}
+                markdown={markdown}
+                showPanes={showPanes}
+                setShowPanes={setShowPanes}
+              />
               <PreviewPane />
             </SplitPane>
           ) : (
-            <IdeContent showPanes={showPanes} setShowPanes={setShowPanes} />
+            <IdeContent
+              handleEditorChange={handleEditorChange}
+              markdown={markdown}
+              showPanes={showPanes}
+              setShowPanes={setShowPanes}
+            />
           )}
         </div>
       </section>

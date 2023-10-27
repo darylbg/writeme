@@ -363,6 +363,8 @@ body {
   /* background-color: var(--mid-grey); */
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
+  display: flex;
+  flex-direction: column;
 }
 
 .ide-menu {
@@ -370,6 +372,7 @@ body {
   display: flex;
   padding: 15px;
   border-top-left-radius: 12px;
+  flex: 0;
 }
 
 .ide-menu-items-left {
@@ -426,11 +429,16 @@ body {
 /* ide content */
 
 .ide-content {
-  background-color: var(--mid-grey);
+  /* background-color: var(--mid-grey); */
+  flex: 1;
 }
 
 .is-ai-loading p {
   color: white;
+}
+
+.ide-content-code {
+  height: 100%;
 }
 
 .ide-content-code p {
