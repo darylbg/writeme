@@ -6,7 +6,6 @@ import { FiArrowRight, FiSearch } from "react-icons/fi";
 import axios from "axios";
 import { AiContext } from "../context/AiContext";
 import PreviewPane from "./PreviewPane";
-import ReactMarkdown from "react-markdown";
 import "../assets/css/splitPaneStyle.css";
 
 export default function ContentPage(toggleWelcomeOpen) {
@@ -16,15 +15,18 @@ export default function ContentPage(toggleWelcomeOpen) {
   const [inputErrorMsg, setInputErrorMsg] = useState("");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [showPanes, setShowPanes] = useState(false);
-  const [markdown, setMarkdown] = useState(null);
+  const [markdown, setMarkdown] = useState('');
+  
+  console.log('markdown', markdown)
 
-  const { aiApidata, handleAiApiCall, isAiDataLoading } = useContext(AiContext);
+  const { aiApiData, handleAiApiCall, isAiDataLoading } = useContext(AiContext);
 
   useEffect(() => {
-    if (aiApidata) {
-      setMarkdown(aiApidata)
+    if (aiApiData && aiApiData.response) {
+      // console.log('apidata', aiApiData.response)
+      setMarkdown(aiApiData.response)
     }
-  })
+  }, [aiApiData])
 
   const query = {
     query: "Give a history of napoleon, 200 words",
@@ -70,7 +72,7 @@ export default function ContentPage(toggleWelcomeOpen) {
         setUserRepos(githubData);
         setSelectedRepo(githubData[0]);
         setInputErrorMsg("");
-        console.log(githubData);
+        // console.log(githubData);
       }
     } catch (error) {
       // console.log(error);
@@ -168,7 +170,7 @@ export default function ContentPage(toggleWelcomeOpen) {
                 showPanes={showPanes}
                 setShowPanes={setShowPanes}
               />
-              <PreviewPane />
+              <PreviewPane markdown={markdown}/>
             </SplitPane>
           ) : (
             <IdeContent

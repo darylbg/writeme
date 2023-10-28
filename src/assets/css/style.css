@@ -431,6 +431,7 @@ body {
 .ide-content {
   /* background-color: var(--mid-grey); */
   flex: 1;
+  display: flex;
 }
 
 .is-ai-loading p {
@@ -438,7 +439,9 @@ body {
 }
 
 .ide-content-code {
-  height: 100%;
+  /* height: fit-content; */
+  /* flex: 1; */
+  height: 400px;
 }
 
 .ide-content-code p {
