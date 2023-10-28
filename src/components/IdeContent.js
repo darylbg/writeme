@@ -32,6 +32,15 @@ export default function IdeContent({
     };
   }, [copied]);
 
+  const editorOptions = {
+    selectOnLineNumbers: true,
+    wordWrap: 'on',
+    minimap: {
+      enabled: false
+    },
+    theme: 'vs-dark'
+  };
+
   return (
     <div
       className="ide-pane"
@@ -89,19 +98,13 @@ export default function IdeContent({
         ) : null}
         <div className="ide-content-code">
           <Editor
-            height="90%"
+            height="100%"
             defaultLanguage="markdown"
             defaultValue={markdown}
             value={markdown}
             onChange={handleEditorChange}
-            options={{
-              minimap: {
-                enabled: false,
-              },
-            }}
+            options={editorOptions}
           />
-
-          <p>{markdown}</p>
         </div>
       </div>
     </div>

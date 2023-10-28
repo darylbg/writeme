@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Barlow&family=Bebas+Neue&family=Oswald&family=Poppins&family=Roboto:wght@400;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Poppins&family=Roboto&display=swap");
+
 :root {
   --text: #1b1315;
   --background: #ffffff;
@@ -14,6 +15,7 @@
   --code-font: "Source Code Pro", monospace;
   --roboto-font: "Roboto", sans-serif;
   --poppins-font: "Poppins", sans-serif;
+  --noto-font: 'Noto Sans', sans-serif;
   --font-large: 16px;
   --font-medium: 15px;
   --font-small: 14px;
@@ -352,7 +354,7 @@ body {
 .content-split-pane {
   margin: 0 50px;
   position: static !important;
-  height: fit-content !important;
+  height: 100% !important;
 }
 
 /* ide pane */
@@ -432,6 +434,7 @@ body {
   /* background-color: var(--mid-grey); */
   flex: 1;
   display: flex;
+  flex-direction: column;
 }
 
 .is-ai-loading p {
@@ -440,8 +443,8 @@ body {
 
 .ide-content-code {
   /* height: fit-content; */
-  /* flex: 1; */
-  height: 400px;
+  flex: 1;
+  /* height: 400px; */
 }
 
 .ide-content-code p {
@@ -459,6 +462,16 @@ body {
   border-top-right-radius: 12px;
 }
 
+.preview-pane {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.preview-menu {
+  flex: 0;
+}
+
 .preview-menu-header {
   height: 31px;
   padding: 15px;
@@ -471,4 +484,10 @@ body {
 .preview-menu-header p {
   font-family: var(--roboto-font);
   color: white;
+}
+
+.preview-content {
+  flex: 1;
+  overflow-y: scroll;
+  font-family: var(--noto-font);
 }

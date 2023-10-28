@@ -9,7 +9,7 @@ export default function PreviewPane({markdown}) {
           <p>Live preview</p>
         </div>
       </div>
-      <div className="markdown-preview">
+      <div className="preview-content">
         <Markdown>{markdown}</Markdown>
       </div>
     </div>

@@ -17,7 +17,7 @@ export default function ContentPage(toggleWelcomeOpen) {
   const [showPanes, setShowPanes] = useState(false);
   const [markdown, setMarkdown] = useState('');
   
-  console.log('markdown', markdown)
+  // console.log('selected repo', markdown)
 
   const { aiApiData, handleAiApiCall, isAiDataLoading } = useContext(AiContext);
 
@@ -28,12 +28,12 @@ export default function ContentPage(toggleWelcomeOpen) {
     }
   }, [aiApiData])
 
-  const query = {
-    query: "Give a history of napoleon, 200 words",
-  };
+
 
   const handleReadmeGenerate = () => {
-    // e.preventDefault();
+    const query = {
+      query: `Generate a short README.md file in markdown syntax for this repository: ${selectedRepo.value}`,
+    };
     handleAiApiCall(query);
   };
 
