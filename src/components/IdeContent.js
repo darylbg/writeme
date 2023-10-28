@@ -61,7 +61,7 @@ export default function IdeContent({
             <ReactTooltip
               className="ide-tooltip"
               id="download-tooltip"
-              place="top"
+              place="left"
               content="Download"
               border="1px solid #7c7c7d"
               style={{
@@ -78,7 +78,7 @@ export default function IdeContent({
             <ReactTooltip
               className="ide-tooltip"
               id="copy-tooltip"
-              place="top"
+              place="left"
               border={copied ? "1px solid #07E607" : "1px solid #7c7c7d"}
               content={copied ? "Copied!" : "Copy"}
               style={{

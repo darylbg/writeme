@@ -348,7 +348,7 @@ body {
   display: flex;
   justify-content: center;
   flex: 1;
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 .content-split-pane {
@@ -490,4 +490,5 @@ body {
   flex: 1;
   overflow-y: scroll;
   font-family: var(--noto-font);
+  padding: 0 10px;
 }
