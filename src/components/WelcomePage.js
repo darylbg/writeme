@@ -11,9 +11,9 @@ export default function WelcomePage(props) {
           : { display: "none" }
       }
     >
-      <div className="home-link">
+      {/* <div className="home-link">
         <button>WRITEME</button>
-      </div>
+      </div> */}
       <div className="welcome-intro">
         <p># My Project</p>
         <p>## Description</p>

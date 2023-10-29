@@ -15,7 +15,7 @@
   --code-font: "Source Code Pro", monospace;
   --roboto-font: "Roboto", sans-serif;
   --poppins-font: "Poppins", sans-serif;
-  --noto-font: 'Noto Sans', sans-serif;
+  --noto-font: "Noto Sans", sans-serif;
   --font-large: 16px;
   --font-medium: 15px;
   --font-small: 14px;
@@ -31,6 +31,21 @@ body {
   display: none;
 }
 
+.logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: fit-content;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+.logo img {
+  max-width: 100px;
+}
+
 /* welcome section */
 
 .welcome-section {
@@ -40,7 +55,7 @@ body {
   display: flex;
   flex-direction: column;
 }
-
+/* 
 .home-link {
   flex: 0;
   margin-top: 25px;
@@ -57,7 +72,7 @@ body {
 .home-link button:hover {
   cursor: pointer;
   color: var(--dark-accent);
-}
+} */
 
 .welcome-intro {
   flex: 1;
@@ -362,11 +377,13 @@ body {
 .ide-pane {
   width: 100%;
   height: 100%;
-  /* background-color: var(--mid-grey); */
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   display: flex;
   flex-direction: column;
+  /* border: 1px solid var(--dark-grey); */
+  box-sizing: border-box;
+  border-top-right-radius: 12px;
 }
 
 .ide-menu {
@@ -435,10 +452,26 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+
+.is-ai-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--dark-grey);
+  padding: 0 20px;
 }
 
 .is-ai-loading p {
   color: white;
+  padding-left: 20px;
+  font-size: var(--font-large);
+  font-family: var(--poppins-font);
 }
 
 .ide-content-code {
@@ -481,14 +514,26 @@ body {
   align-items: center;
 }
 
+.preview-dot {
+  height: 5px;
+  width: 5px;
+  background-color: var(--light-grey);
+  border-radius: 50%;
+}
+
 .preview-menu-header p {
   font-family: var(--poppins-font);
   color: white;
+  padding-left: 10px;
 }
 
 .preview-content {
   flex: 1;
   overflow-y: scroll;
   font-family: var(--noto-font);
-  padding: 0 10px;
+  padding: 10px 10px 10px 25px;
+}
+
+.wmde-markdown > * {
+  overflow-wrap: anywhere !important;
 }

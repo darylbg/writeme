@@ -1,17 +1,16 @@
 import React from "react";
-import Markdown from "react-markdown";
+import MarkdownPreview from '@uiw/react-markdown-preview';
 
 export default function PreviewPane({markdown}) {
   return (
     <div className="preview-pane">
       <div className="preview-menu">
         <div className="preview-menu-header">
-          <p>Live preview</p>
+          <div className="preview-dot"></div><p>Live preview</p>
         </div>
       </div>
       <div className="preview-content">
-        {/* <p>kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</p> */}
-        <Markdown>{markdown}</Markdown>
+        <MarkdownPreview source={markdown} />
       </div>
     </div>
   );
