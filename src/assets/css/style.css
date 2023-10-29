@@ -475,14 +475,14 @@ body {
 .preview-menu-header {
   height: 31px;
   padding: 15px;
-  background-color: var(--light-grey);
+  background-color: var(--dark-grey);
   border-top-right-radius: 12px;
   display: flex;
   align-items: center;
 }
 
 .preview-menu-header p {
-  font-family: var(--roboto-font);
+  font-family: var(--poppins-font);
   color: white;
 }
 

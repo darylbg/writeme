@@ -20,6 +20,29 @@ export default function IdeContent({
     setShowPanes(!showPanes);
   };
 
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(markdown);
+      setCopied(true);
+    } catch (error) {
+      console.log("copy failed", error);
+    }
+  };
+
+  const handleMarkdownDownload = () => {
+    const blob = new Blob([markdown], { type: "text/markdown" });
+
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'README.md';
+    link.style.display = 'none';
+
+    document.body.appendChild(link);
+    link.click();
+
+    document.body.removeChild(link);
+  }
+
   useEffect(() => {
     let timeout;
     if (copied) {
@@ -34,11 +57,11 @@ export default function IdeContent({
 
   const editorOptions = {
     selectOnLineNumbers: true,
-    wordWrap: 'on',
+    wordWrap: "on",
     minimap: {
-      enabled: false
+      enabled: false,
     },
-    theme: 'vs-dark'
+    theme: "vs-dark",
   };
 
   return (
@@ -56,7 +79,11 @@ export default function IdeContent({
           </button>
         </div>
         <div className="ide-menu-items-right">
-          <div className="ide-menu-item" data-tooltip-id="download-tooltip">
+          <div
+            className="ide-menu-item"
+            data-tooltip-id="download-tooltip"
+            onClick={handleMarkdownDownload}
+          >
             <FiDownload />
             <ReactTooltip
               className="ide-tooltip"
@@ -72,7 +99,7 @@ export default function IdeContent({
           <div
             className="ide-menu-item"
             data-tooltip-id="copy-tooltip"
-            onClick={() => setCopied(true)}
+            onClick={handleCopy}
           >
             <FiCopy />
             <ReactTooltip
