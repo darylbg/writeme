@@ -15,8 +15,8 @@ export default function ContentPage(toggleWelcomeOpen) {
   const [inputErrorMsg, setInputErrorMsg] = useState("");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [showPanes, setShowPanes] = useState(false);
-  const [markdown, setMarkdown] = useState('');
-  
+  const [markdown, setMarkdown] = useState("");
+
   // console.log('selected repo', markdown)
 
   const { aiApiData, handleAiApiCall, isAiDataLoading } = useContext(AiContext);
@@ -24,11 +24,9 @@ export default function ContentPage(toggleWelcomeOpen) {
   useEffect(() => {
     if (aiApiData && aiApiData.response) {
       // console.log('apidata', aiApiData.response)
-      setMarkdown(aiApiData.response)
+      setMarkdown(aiApiData.response);
     }
-  }, [aiApiData])
-
-
+  }, [aiApiData]);
 
   const handleReadmeGenerate = () => {
     const query = {
@@ -138,21 +136,46 @@ export default function ContentPage(toggleWelcomeOpen) {
                 }}
               />
             </div>
-            <div
-              className={`writeme-button ${
-                selectedRepo !== null
-                  ? "writeme-btn-enabled"
-                  : "writeme-btn-disabled"
-              }`}
-            >
-              <button
-                disabled={selectedRepo === null}
-                onClick={handleReadmeGenerate}
+            {windowWidth > 650 ? (
+              <div
+                className={`writeme-button ${
+                  selectedRepo !== null
+                    ? "writeme-btn-enabled"
+                    : "writeme-btn-disabled"
+                }`}
               >
-                WRITEME
-                <FiArrowRight />
-              </button>
+                <button
+                  disabled={selectedRepo === null}
+                  onClick={handleReadmeGenerate}
+                >
+                  WRITEME
+                  <FiArrowRight />
+                </button>
+              </div>
+            ) : null}
+          </div>
+          <div className="break"></div>
+          <div className="filters">
+            <div className="filter-button">
+              <button className="">Filters</button>
             </div>
+            {windowWidth < 650 ? (
+              <div
+                className={`writeme-button ${
+                  selectedRepo !== null
+                    ? "writeme-btn-enabled"
+                    : "writeme-btn-disabled"
+                }`}
+              >
+                <button
+                  disabled={selectedRepo === null}
+                  onClick={handleReadmeGenerate}
+                >
+                  WRITEME
+                  <FiArrowRight />
+                </button>
+              </div>
+            ) : null}
           </div>
         </div>
         <div className="display-row">
@@ -170,7 +193,7 @@ export default function ContentPage(toggleWelcomeOpen) {
                 showPanes={showPanes}
                 setShowPanes={setShowPanes}
               />
-              <PreviewPane markdown={markdown}/>
+              <PreviewPane markdown={markdown} />
             </SplitPane>
           ) : (
             <IdeContent

@@ -157,8 +157,9 @@ body {
 
 .menu-row {
   display: flex;
-  justify-content: center;
+  align-items: center;
   padding-top: 8vh;
+  flex-direction: column;
 }
 
 .menu > * {
@@ -351,8 +352,27 @@ body {
   }
 
   .writeme-button {
-    justify-content: flex-end;
-    padding: 20px 30px 0 0;
+    margin-right: 30px;
+  }
+}
+
+/* filter row */
+
+.filters {
+  flex: 1 1;
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+    margin: 30px 0;
+}
+
+.filter-button {
+  flex: 1;
+}
+
+@media screen and (max-width: 650px) {
+  .filter-button {
+    margin-left: 30px;
   }
 }
 
@@ -370,6 +390,12 @@ body {
   margin: 0 50px;
   position: static !important;
   height: 100% !important;
+}
+
+@media screen and (max-width: 900px) {
+  .content-split-pane {
+    margin: 0 10px;
+  }
 }
 
 /* ide pane */
