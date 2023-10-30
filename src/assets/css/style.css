@@ -162,6 +162,20 @@ body {
   flex-direction: column;
 }
 
+@media screen and (max-width: 830px) {
+  .menu-row {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .menu-row {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
 .menu > * {
   font-family: var(--poppins-font);
 }
@@ -182,6 +196,12 @@ body {
 
 .repo-select {
   padding: 0 30px;
+}
+
+@media screen and (max-width: 650px) {
+  .repo-select {
+    padding: 0px;
+  }
 }
 
 .username-search label,
@@ -252,7 +272,7 @@ body {
 
 @media screen and (max-width: 650px) {
   .username-search {
-    margin: 10px 30px;
+    margin: 10px 0px;
   }
 }
 
@@ -350,36 +370,73 @@ body {
   .menu {
     flex-direction: column;
   }
-
-  .writeme-button {
-    margin-right: 30px;
-  }
 }
 
 /* filter row */
 
 .filters {
   flex: 1 1;
-    display: flex;
-    width: 100%;
-    max-width: 800px;
-    margin: 30px 0;
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  margin: 30px 0;
 }
 
 .filter-button {
   flex: 1;
 }
 
-@media screen and (max-width: 650px) {
-  .filter-button {
-    margin-left: 30px;
+.filter-button button {
+  height: 40px;
+  background-color: var(--dark-grey);
+  color: white;
+  font-family: var(--poppins-font);
+  font-size: var(--font-medium);
+  padding: 0 15px;
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  width: 200px;
+}
+
+@media screen and (max-width: 400px) {
+  .filter-button button {
+    width: fit-content;
   }
+}
+
+.filter-button button:hover {
+  background-color: var(--accent);
+  cursor: pointer;
+  transition: all ease-in-out 0.2s;
+}
+
+.filter-button button p {
+  color: white;
+  padding-right: 45px;
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.filter-button button svg {
+  float: right;
+  height: 16px;
+  width: 16px;
+}
+
+.filter-btn-disabled {
+  background-color: var(--light-grey) !important;
+}
+
+.filter-btn-disabled:hover {
+  cursor: auto !important;
 }
 
 /* split pane content */
 
 .display-row {
-  margin-top: 50px;
   display: flex;
   justify-content: center;
   flex: 1;
@@ -469,6 +526,12 @@ body {
   font-family: var(--roboto-font);
   /* border: 1px solid; */
   box-sizing: border-box;
+}
+
+@media screen and (max-width: 830px) {
+  .ide-pane {
+    padding: 0 15px;
+  }
 }
 
 /* ide content */

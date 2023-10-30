@@ -3,6 +3,7 @@ import IdeContent from "./IdeContent";
 import Select from "react-select";
 import SplitPane from "react-split-pane";
 import { FiArrowRight, FiSearch } from "react-icons/fi";
+import { MdOutlineTune } from "react-icons/md";
 import axios from "axios";
 import { AiContext } from "../context/AiContext";
 import PreviewPane from "./PreviewPane";
@@ -157,7 +158,13 @@ export default function ContentPage(toggleWelcomeOpen) {
           <div className="break"></div>
           <div className="filters">
             <div className="filter-button">
-              <button className="">Filters</button>
+              <button
+                className={selectedRepo === null ? "filter-btn-disabled" : ""}
+                disabled={selectedRepo === null}
+              >
+                <p>Filters</p>
+                <MdOutlineTune />
+              </button>
             </div>
             {windowWidth < 650 ? (
               <div
@@ -201,6 +208,7 @@ export default function ContentPage(toggleWelcomeOpen) {
               markdown={markdown}
               showPanes={showPanes}
               setShowPanes={setShowPanes}
+              windowWidth={windowWidth}
             />
           )}
         </div>

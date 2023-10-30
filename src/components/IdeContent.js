@@ -10,6 +10,7 @@ export default function IdeContent({
   markdown,
   setShowPanes,
   showPanes,
+  windowWidth
 }) {
   const [copied, setCopied] = useState(false);
 
@@ -116,7 +117,9 @@ export default function IdeContent({
           </div>
         </div>
       </div>
-      <div className="ide-content">
+      <div className="ide-content"
+      style={{width: windowWidth < 800 ?  windowWidth - 30 : null}}
+      >
         {isAiDataLoading ? (
           <div className="is-ai-loading">
             <DotPulse size={40} speed={1.3} color="white" />
