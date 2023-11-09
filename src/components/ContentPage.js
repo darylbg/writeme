@@ -7,6 +7,7 @@ import { MdOutlineTune } from "react-icons/md";
 import axios from "axios";
 import { AiContext } from "../context/AiContext";
 import PreviewPane from "./PreviewPane";
+import Sidebar from "./Sidebar";
 import "../assets/css/splitPaneStyle.css";
 
 export default function ContentPage(toggleWelcomeOpen) {
@@ -17,6 +18,7 @@ export default function ContentPage(toggleWelcomeOpen) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [showPanes, setShowPanes] = useState(false);
   const [markdown, setMarkdown] = useState("");
+  const [sidebarToggle, setSidebarToggle] = useState(false);
 
   // console.log('selected repo', markdown)
 
@@ -48,8 +50,9 @@ export default function ContentPage(toggleWelcomeOpen) {
     };
   }, []);
 
-  const handleUsernameInput = (e) => {
+  const handleSidebarToggle = (e) => {
     e.preventDefault();
+    setSidebarToggle(!sidebarToggle);
   };
 
   const handleGetUserRepos = async (e) => {
@@ -161,6 +164,7 @@ export default function ContentPage(toggleWelcomeOpen) {
               <button
                 className={selectedRepo === null ? "filter-btn-disabled" : ""}
                 disabled={selectedRepo === null}
+                onClick={handleSidebarToggle}
               >
                 <p>Filters</p>
                 <MdOutlineTune />
@@ -212,6 +216,11 @@ export default function ContentPage(toggleWelcomeOpen) {
             />
           )}
         </div>
+        {sidebarToggle ? (
+          <Sidebar
+            handleSidebarToggle={handleSidebarToggle}
+          />
+        ) : null}
       </section>
     </>
   );

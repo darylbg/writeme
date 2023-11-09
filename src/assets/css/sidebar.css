@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Poppins&family=Roboto&display=swap");
+
+:root {
+  --text: #1b1315;
+  --background: #ffffff;
+  --primary: #996633;
+  --secondary: #ebe0d6;
+  --secondary-darker: #e2d3c5;
+  --accent: #800020;
+  --dark-accent: #720018;
+  --light-grey: #7c7c7d;
+  --dark-grey: #1d1f22;
+  --mid-grey: #23272e;
+  --focus-highlight: #2684ff;
+  --code-font: "Source Code Pro", monospace;
+  --roboto-font: "Roboto", sans-serif;
+  --poppins-font: "Poppins", sans-serif;
+  --noto-font: "Noto Sans", sans-serif;
+  --font-large: 16px;
+  --font-medium: 15px;
+  --font-small: 14px;
+  --font-xsmall: 12px;
+  --font-bold: 900;
+}
+
+.sidebar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sidebar-background {
+    background-color: var(--light-grey);
+    opacity: 0.5;
+    flex: 1;
+}
+
+.sidebar-content {
+    background-color: white;
+    box-shadow: -10px 0 20px rgba(0, 0, 0, 0.3);
+    padding: 0 50px;
+}
