@@ -194,7 +194,7 @@ export default function ContentPage(toggleWelcomeOpen) {
             <SplitPane
               split="vertical"
               minSize={230}
-              maxSize={windowWidth - 236}
+              maxSize={windowWidth - 260}
               defaultSize="50%"
               className="content-split-pane"
             >
