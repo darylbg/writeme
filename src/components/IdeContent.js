@@ -13,6 +13,7 @@ export default function IdeContent({
   windowWidth
 }) {
   const [copied, setCopied] = useState(false);
+  const [editor, setEditor] = useState(null);
 
   const { aiApiData, handleAiApiCall, isAiDataLoading } = useContext(AiContext);
 

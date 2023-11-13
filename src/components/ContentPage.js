@@ -158,7 +158,7 @@ export default function ContentPage(toggleWelcomeOpen) {
               </div>
             ) : null}
           </div>
-          <div className="break"></div>
+          {/* <div className="break"></div>
           <div className="filters">
             <div className="filter-button">
               <button
@@ -187,7 +187,7 @@ export default function ContentPage(toggleWelcomeOpen) {
                 </button>
               </div>
             ) : null}
-          </div>
+          </div> */}
         </div>
         <div className="display-row">
           {showPanes ? (
