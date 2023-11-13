@@ -36,6 +36,7 @@ body {
   top: 10px;
   left: 10px;
   width: fit-content;
+  z-index: 99;
 }
 
 .logo:hover {
@@ -55,24 +56,6 @@ body {
   display: flex;
   flex-direction: column;
 }
-/* 
-.home-link {
-  flex: 0;
-  margin-top: 25px;
-}
-
-.home-link button {
-  border: none;
-  background-color: transparent;
-  color: var(--accent);
-  font-weight: 900;
-  font-size: 20px;
-}
-
-.home-link button:hover {
-  cursor: pointer;
-  color: var(--dark-accent);
-} */
 
 .welcome-intro {
   flex: 1;

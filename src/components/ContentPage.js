@@ -8,6 +8,8 @@ import axios from "axios";
 import { AiContext } from "../context/AiContext";
 import PreviewPane from "./PreviewPane";
 import Sidebar from "./Sidebar";
+import { generateReadmeQuery } from '../utils/GenerateReadmeQuery';
+
 import "../assets/css/splitPaneStyle.css";
 
 export default function ContentPage(toggleWelcomeOpen) {
@@ -32,9 +34,7 @@ export default function ContentPage(toggleWelcomeOpen) {
   }, [aiApiData]);
 
   const handleReadmeGenerate = () => {
-    const query = {
-      query: `Generate a short README.md file in markdown syntax for this repository: ${selectedRepo.value}`,
-    };
+    const query = generateReadmeQuery(selectedRepo.value);
     handleAiApiCall(query);
   };
 

@@ -21,8 +21,8 @@ function App() {
   return (
     <AiContextProvider>
       <div className="app">
-        <div className="logo" onClick={toggleWelcomeOpen}>
-          <img src={logoImg} alt="logo" />
+        <div className="logo">
+          <img src={logoImg}  onClick={toggleWelcomeOpen} alt="logo" />
         </div>
         {continueBtn ? (
           <WelcomePage
