@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/writeme/static/css/main.22c7aff8.css",
+    "main.js": "/writeme/static/js/main.139e94f0.js",
+    "static/media/Logo.png": "/writeme/static/media/Logo.99d0e4ef028e55ee824c.png",
+    "index.html": "/writeme/index.html",
+    "main.22c7aff8.css.map": "/writeme/static/css/main.22c7aff8.css.map",
+    "main.139e94f0.js.map": "/writeme/static/js/main.139e94f0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.22c7aff8.css",
+    "static/js/main.139e94f0.js"
+  ]
+}
