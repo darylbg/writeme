@@ -26,9 +26,6 @@ function AiContextProvider({ children }) {
       try {
         const response = await axios.request(options);
         setAiApiData(response.data);
-        // console.log('response.data', response.data)
-        // console.log('ai data', aiApiData);
-        // console.log('clicked again')
         setIsAiDataLoading(false);
       } catch (error) {
         console.error(error);

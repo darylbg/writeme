@@ -27,7 +27,7 @@ export default function IdeContent({
       await navigator.clipboard.writeText(markdown);
       setCopied(true);
     } catch (error) {
-      console.log("copy failed", error);
+      // console.log("copy failed", error);
     }
   };
 
