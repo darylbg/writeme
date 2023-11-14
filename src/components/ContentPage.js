@@ -3,7 +3,6 @@ import IdeContent from "./IdeContent";
 import Select from "react-select";
 import SplitPane from "react-split-pane";
 import { FiArrowRight, FiSearch } from "react-icons/fi";
-import { MdOutlineTune } from "react-icons/md";
 import axios from "axios";
 import { AiContext } from "../context/AiContext";
 import PreviewPane from "./PreviewPane";
@@ -93,7 +92,7 @@ export default function ContentPage(toggleWelcomeOpen) {
       <section className="content-section">
         <div className="menu-row">
           <div className="menu">
-            <div className="username-search">
+            <form onSubmit={handleGetUserRepos} className="username-search">
               <label htmlFor="">Search Github username</label>
               <div className="error-div">{inputErrorMsg}</div>
               <input
@@ -104,12 +103,13 @@ export default function ContentPage(toggleWelcomeOpen) {
               />
               <div
                 className="username-search-icon"
-                onClick={handleGetUserRepos}
+                // onClick={handleGetUserRepos}
+                type="submit"
               >
                 <FiSearch />
               </div>
-            </div>
-            <div className="repo-select">
+            </form>
+            <form className="repo-select">
               <label htmlFor="">Select repository</label>
               <div className="error-div"></div>
               <Select
@@ -139,7 +139,7 @@ export default function ContentPage(toggleWelcomeOpen) {
                   }),
                 }}
               />
-            </div>
+            </form>
             {windowWidth > 650 ? (
               <div
                 className={`writeme-button ${
