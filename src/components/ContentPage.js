@@ -103,7 +103,7 @@ export default function ContentPage(toggleWelcomeOpen) {
               />
               <div
                 className="username-search-icon"
-                // onClick={handleGetUserRepos}
+                onClick={handleGetUserRepos}
                 type="submit"
               >
                 <FiSearch />
