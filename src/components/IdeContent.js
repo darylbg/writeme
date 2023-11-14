@@ -64,7 +64,20 @@ export default function IdeContent({
       enabled: false,
     },
     theme: "vs-dark",
+  };   
+
+  // editor loads in light mode, this  fixes it but not ideal :)
+  const simulateEnterKeyPress = () => {
+    if (editor) {
+      editor.trigger("keyboard", "type", { text: "\n" });
+    }
   };
+
+  useEffect(() => {
+    const timeout = setTimeout(simulateEnterKeyPress, 2000);
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <div
@@ -135,6 +148,7 @@ export default function IdeContent({
             value={markdown}
             onChange={handleEditorChange}
             options={editorOptions}
+            onMount={setEditor}
           />
         </div>
       </div>

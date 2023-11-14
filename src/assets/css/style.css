@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Poppins&family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Poppins&family=Roboto&family=Roboto+Mono&display=swap");
 
 :root {
   --text: #1b1315;
@@ -14,6 +14,7 @@
   --focus-highlight: #2684ff;
   --code-font: "Source Code Pro", monospace;
   --roboto-font: "Roboto", sans-serif;
+  --roboto-mono-font: 'Roboto Mono', monospace;
   --poppins-font: "Poppins", sans-serif;
   --noto-font: "Noto Sans", sans-serif;
   --font-large: 16px;
@@ -55,39 +56,46 @@ body {
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
+  padding-top: 60px;
 }
 
 .welcome-intro {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   padding-bottom: 20px;
+  max-width: 750px;
+}
+
+.welcome-intro > * {
+  color: var(--primary);
+  margin: 0;
+  font-family: var(--roboto-mono-font);
+}
+
+.welcome-intro h1 {
+  font-size: 8vw;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--primary);
+}
+
+.welcome-intro h2 {
+  font-size: 6vw;
+  border-bottom: 1px solid var(--primary);
+  padding-bottom: 5px;
 }
 
 .welcome-intro p {
-  color: var(--primary);
-  margin: 0;
-  font-size: 35px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 900;
-}
-
-.welcome-intro p:first-child {
-  padding-bottom: 50px;
-}
-
-.welcome-intro p:last-child {
-  font-size: 25px;
-  font-weight: 400;
+  padding: 10px 0 20px 0;
 }
 
 .welcome-text {
-  flex: 0 0 50%;
+  /* flex: 0 0 50%; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: 20px;
+  padding: 20px 0 60px 0;
 }
 
 .welcome-text p {
@@ -127,6 +135,26 @@ body {
 
 .continue-button button svg {
   margin-left: 15px;
+}
+
+@media screen and (min-width: 800px) {
+  .welcome-intro h1 {
+    font-size: 50px;
+  }
+  
+  .welcome-intro h2 {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .welcome-intro p {
+    font-size: 13.5px;
+  }
+
+  .welcome-intro {
+    margin-top: 40px;
+  }
 }
 
 /* content section */
@@ -534,10 +562,12 @@ body {
   left: 0;
   z-index: 99;
   display: flex;
+  flex: 1;
   flex-direction: row;
   align-items: center;
   background-color: var(--dark-grey);
   padding: 0 20px;
+  width: 50%;
 }
 
 .is-ai-loading p {
